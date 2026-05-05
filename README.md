@@ -1,3 +1,5 @@
+**Chirp** is a project made during _PL Coding's_ Kotlin Multiplatform course.
+
 This is a Kotlin Multiplatform project targeting Android, iOS, Desktop (JVM).
 
 * [/composeApp](./composeApp/src) is for code that will be shared across your Compose Multiplatform applications.
