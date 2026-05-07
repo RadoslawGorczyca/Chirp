@@ -23,7 +23,6 @@ kotlin {
             instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         }
     }
-    jvm()
 
     // For iOS targets, this is also where you should
     // configure native binary output. For more information, see:
@@ -86,5 +85,4 @@ kotlin {
             }
         }
     }
-
 }
