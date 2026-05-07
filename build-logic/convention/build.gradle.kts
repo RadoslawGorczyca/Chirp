@@ -37,5 +37,13 @@ gradlePlugin {
             id = "dev.gorczyca.convention.android.application"
             implementationClass = "AndroidApplicationConventionPlugin"
         }
+        register("androidComposeAppliction") {
+            id = "dev.gorczyca.convention.android.application.compose"
+            implementationClass = "AndroidApplicationComposeConventionPlugin"
+        }
+        register("cmpAppliction") {
+            id = "dev.gorczyca.convention.cmp.application"
+            implementationClass = "CmpApplicationConventionPlugin"
+        }
     }
 }
