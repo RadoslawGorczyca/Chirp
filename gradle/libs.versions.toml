@@ -172,6 +172,7 @@ convention-kmp-library = { id = "dev.gorczyca.convention.kmp.library", version =
 convention-cmp-library = { id = "dev.gorczyca.convention.cmp.library", version = "unspecified"}
 convention-cmp-feature = { id = "dev.gorczyca.convention.cmp.feature", version = "unspecified"}
 convention-buildkonfig = { id = "dev.gorczyca.convention.buildkonfig", version = "unspecified"}
+convention-room = { id = "dev.gorczyca.convention.room", version = "unspecified"}
 
 # Android
 android-application = { id = "com.android.application", version.ref = "agp" }
