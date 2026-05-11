@@ -49,5 +49,13 @@ gradlePlugin {
             id = "dev.gorczyca.convention.kmp.library"
             implementationClass = "KmpLibraryConventionPlugin"
         }
+        register("cmpLibrary") {
+            id = "dev.gorczyca.convention.cmp.library"
+            implementationClass = "CmpLibraryConventionPlugin"
+        }
+        register("cmpFeature") {
+            id = "dev.gorczyca.convention.cmp.feature"
+            implementationClass = "CmpFeatureConventionPlugin"
+        }
     }
 }
