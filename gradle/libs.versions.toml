@@ -142,6 +142,8 @@ compose-gradlePlugin = { group = "org.jetbrains.kotlin", name = "compose-compile
 kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 androidx-room-gradle-plugin = { module = "androidx.room:room-gradle-plugin", version.ref = "room" }
 ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
+buildkonfig-gradlePlugin = { group = "com.codingfeline.buildkonfig", name = "buildkonfig-gradle-plugin", version.ref = "buildkonfig" }
+buildkonfig-compiler = { group = "com.codingfeline.buildkonfig", name = "buildkonfig-compiler", version.ref = "buildkonfig" }
 
 androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
@@ -169,6 +171,7 @@ convention-cmp-application = { id = "dev.gorczyca.convention.cmp.application", v
 convention-kmp-library = { id = "dev.gorczyca.convention.kmp.library", version = "unspecified"}
 convention-cmp-library = { id = "dev.gorczyca.convention.cmp.library", version = "unspecified"}
 convention-cmp-feature = { id = "dev.gorczyca.convention.cmp.feature", version = "unspecified"}
+convention-buildkonfig = { id = "dev.gorczyca.convention.buildkonfig", version = "unspecified"}
 
 # Android
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -191,7 +194,6 @@ room = { id = "androidx.room", version.ref = "room" }
 google-services = { id = "com.google.gms.google-services", version.ref = "google-services" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 buildkonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildkonfig" }
-android-lint = { id = "com.android.lint", version.ref = "agp" }
 
 [bundles]
 koin-common = [
