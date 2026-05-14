@@ -149,7 +149,7 @@ fun ChirpPrimaryButtonPreview() {
 
 @Composable
 @Preview
-fun ChirpPrimaryButtonPreview_dark() {
+fun ChirpPrimaryButtonDarkThemePreview() {
     ChirpTheme(
         darkTheme = true
     ) {
@@ -175,7 +175,7 @@ fun ChirpSecondaryButtonPreview() {
 
 @Composable
 @Preview
-fun ChirpSecondaryButtonPreview_dark() {
+fun ChirpSecondaryButtonDarkThemePreview() {
     ChirpTheme(
         darkTheme = true
     ) {
@@ -201,7 +201,7 @@ fun ChirpDestructivePrimaryButtonPreview() {
 
 @Composable
 @Preview
-fun ChirpDestructivePrimaryButtonPreview_dark() {
+fun ChirpDestructivePrimaryButtonDarkThemePreview() {
     ChirpTheme(
         darkTheme = true
     ) {
@@ -227,7 +227,7 @@ fun ChirpDestructiveSecondaryButtonPreview() {
 
 @Composable
 @Preview
-fun ChirpDestructiveSecondaryButtonPreview_dark() {
+fun ChirpDestructiveSecondaryButtonDarkThemePreview() {
     ChirpTheme(
         darkTheme = true
     ) {
@@ -253,7 +253,7 @@ fun ChirpTextButtonPreview() {
 
 @Composable
 @Preview
-fun ChirpTextButtonPreview_dark() {
+fun ChirpTextButtonDarkThemePreview() {
     ChirpTheme(
         darkTheme = true
     ) {
