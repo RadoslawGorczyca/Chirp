@@ -15,9 +15,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -38,8 +40,8 @@ fun ChirpAdaptiveFormLayout(
     headerText: String,
     errorText: String? = null,
     logo: @Composable () -> Unit,
-    formContent: @Composable ColumnScope.() -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    formContent: @Composable ColumnScope.() -> Unit
 ) {
     val configuration = currentDeviceConfiguration()
     val headerColor = if (configuration == DeviceConfiguration.MOBILE_LANDSCAPE) {
@@ -72,30 +74,40 @@ fun ChirpAdaptiveFormLayout(
         }
 
         DeviceConfiguration.MOBILE_LANDSCAPE -> {
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(16.dp),
-                modifier = modifier
-                    .fillMaxSize()
-                    .consumeWindowInsets(WindowInsets.displayCutout)
-            ) {
-                Column(
-                    modifier = Modifier
-                        .weight(1f),
-                    verticalArrangement = Arrangement.spacedBy(24.dp)
+            Scaffold(
+                contentWindowInsets = WindowInsets.navigationBars
+            ) { innerPadding ->
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(16.dp),
+                    modifier = modifier
+                        .fillMaxSize()
+                        .padding(innerPadding)
+                        .consumeWindowInsets(WindowInsets.displayCutout)
+                        .consumeWindowInsets(WindowInsets.navigationBars)
                 ) {
-                    Spacer(modifier = Modifier.height(16.dp))
-                    logo()
-                    AuthHeaderSection(
-                        headerText = headerText,
-                        headerColor = headerColor,
-                        errorText = errorText
-                    )
-                }
-                ChirpSurface(
-                    modifier = Modifier
-                        .weight(1f)
-                ) {
-                    formContent()
+                    Spacer(modifier = Modifier.width(16.dp))
+                    Column(
+                        modifier = Modifier
+                            .weight(1f),
+                        verticalArrangement = Arrangement.spacedBy(24.dp)
+                    ) {
+                        Spacer(modifier = Modifier.height(16.dp))
+                        logo()
+                        AuthHeaderSection(
+                            headerText = headerText,
+                            headerColor = headerColor,
+                            errorText = errorText,
+                            headerTextAlignment = TextAlign.Start
+                        )
+                    }
+                    ChirpSurface(
+                        modifier = Modifier
+                            .weight(1f)
+                    ) {
+                        Spacer(modifier = Modifier.height(16.dp))
+                        formContent()
+                        Spacer(modifier = Modifier.height(16.dp))
+                    }
                 }
             }
         }
@@ -103,31 +115,36 @@ fun ChirpAdaptiveFormLayout(
         DeviceConfiguration.TABLET_PORTRAIT,
         DeviceConfiguration.TABLET_LANDSCAPE,
         DeviceConfiguration.DESKTOP -> {
-            Column(
-                modifier = modifier
-                    .fillMaxSize()
-                    .background(MaterialTheme.colorScheme.background)
-                    .padding(top = 32.dp),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(32.dp)
-            ) {
-                logo()
+            Scaffold(
+                contentWindowInsets = WindowInsets.navigationBars
+            ) { innerPadding ->
                 Column(
-                    modifier = Modifier
-                        .widthIn(max = 480.dp)
-                        .fillMaxWidth()
-                        .clip(RoundedCornerShape(32.dp))
-                        .background(MaterialTheme.colorScheme.surface)
-                        .padding(horizontal = 24.dp, vertical = 32.dp),
-                    verticalArrangement = Arrangement.spacedBy(24.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
+                    modifier = modifier
+                        .fillMaxSize()
+                        .background(MaterialTheme.colorScheme.background)
+                        .padding(innerPadding)
+                        .padding(top = 32.dp, bottom = 16.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(32.dp)
                 ) {
-                    AuthHeaderSection(
-                        headerText = headerText,
-                        headerColor = headerColor,
-                        errorText = errorText,
-                    )
-                    formContent()
+                    logo()
+                    Column(
+                        modifier = Modifier
+                            .widthIn(max = 480.dp)
+                            .fillMaxWidth()
+                            .clip(RoundedCornerShape(32.dp))
+                            .background(MaterialTheme.colorScheme.surface)
+                            .padding(horizontal = 24.dp, vertical = 32.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                    ) {
+                        AuthHeaderSection(
+                            headerText = headerText,
+                            headerColor = headerColor,
+                            errorText = errorText,
+                        )
+                        Spacer(modifier = Modifier.height(16.dp))
+                        formContent()
+                    }
                 }
             }
         }
@@ -139,13 +156,14 @@ fun ColumnScope.AuthHeaderSection(
     headerText: String,
     headerColor: Color,
     errorText: String? = null,
+    headerTextAlignment: TextAlign = TextAlign.Center,
     modifier: Modifier = Modifier
 ) {
     Text(
         text = headerText,
         style = MaterialTheme.typography.titleLarge,
         color = headerColor,
-        textAlign = TextAlign.Center,
+        textAlign = headerTextAlignment,
         modifier = modifier.fillMaxWidth()
     )
     AnimatedVisibility(
@@ -158,7 +176,7 @@ fun ColumnScope.AuthHeaderSection(
                 color = MaterialTheme.colorScheme.error,
                 modifier = Modifier
                     .fillMaxWidth(),
-                textAlign = TextAlign.Center
+                textAlign = headerTextAlignment
             )
         }
     }
