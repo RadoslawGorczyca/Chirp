@@ -1,5 +1,6 @@
 package dev.gorczyca.core.data.auth
 
+import dev.gorczyca.core.data.dto.requests.EmailRequest
 import dev.gorczyca.core.data.dto.requests.RegisterRequest
 import dev.gorczyca.core.data.networking.post
 import dev.gorczyca.core.domain.auth.AuthService
@@ -22,6 +23,13 @@ class KtorAuthService(
                 username = username,
                 password = password,
             )
+        )
+    }
+
+    override suspend fun resendVerificationEmail(email: String): EmptyResult<DataError.Remote> {
+        return httpClient.post(
+            route = "/auth/resend-verification",
+            body = EmailRequest(email = email)
         )
     }
 
