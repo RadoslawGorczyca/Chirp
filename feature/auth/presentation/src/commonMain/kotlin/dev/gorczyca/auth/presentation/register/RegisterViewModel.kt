@@ -4,7 +4,7 @@ import androidx.compose.runtime.snapshotFlow
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import chirp.feature.auth.presentation.generated.resources.Res
-import chirp.feature.auth.presentation.generated.resources.error_account_exist
+import chirp.feature.auth.presentation.generated.resources.error_account_exists
 import chirp.feature.auth.presentation.generated.resources.error_invalid_email
 import chirp.feature.auth.presentation.generated.resources.error_invalid_password
 import chirp.feature.auth.presentation.generated.resources.error_invalid_username
@@ -123,7 +123,7 @@ class RegisterViewModel(
                 }
                 .onFailure { error ->
                     val registrationError = when (error) {
-                        DataError.Remote.CONFLICT -> UiText.Resource(Res.string.error_account_exist)
+                        DataError.Remote.CONFLICT -> UiText.Resource(Res.string.error_account_exists)
                         else -> error.toUiText()
                     }
                     _state.update {
