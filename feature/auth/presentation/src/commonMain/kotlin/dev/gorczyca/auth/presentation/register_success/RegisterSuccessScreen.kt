@@ -17,7 +17,7 @@ import dev.gorczyca.core.designsystem.components.brand.ChirpSuccessIcon
 import dev.gorczyca.core.designsystem.components.buttons.ChirpButton
 import dev.gorczyca.core.designsystem.components.buttons.ChirpButtonStyle
 import dev.gorczyca.core.designsystem.components.layouts.ChirpAdaptiveResultLayout
-import dev.gorczyca.core.designsystem.components.layouts.ChirpSimpleSuccessLayout
+import dev.gorczyca.core.designsystem.components.layouts.ChirpSimpleResultLayout
 import dev.gorczyca.core.designsystem.components.layouts.ChirpSnackbarScaffold
 import dev.gorczyca.core.designsystem.theme.ChirpTheme
 import dev.gorczyca.core.presentation.util.ObserveAsEvents
@@ -63,7 +63,7 @@ fun RegisterSuccessScreen(
         snackbarHostState = snackbarHostState
     ) {
         ChirpAdaptiveResultLayout {
-            ChirpSimpleSuccessLayout(
+            ChirpSimpleResultLayout(
                 title = stringResource(Res.string.account_successfully_created),
                 description = stringResource(
                     Res.string.verification_email_sent_to_x,
