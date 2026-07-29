@@ -2,6 +2,7 @@ package dev.gorczyca.core.data.auth
 
 import dev.gorczyca.core.data.dto.requests.EmailRequest
 import dev.gorczyca.core.data.dto.requests.RegisterRequest
+import dev.gorczyca.core.data.networking.get
 import dev.gorczyca.core.data.networking.post
 import dev.gorczyca.core.domain.auth.AuthService
 import dev.gorczyca.core.domain.util.DataError
@@ -30,6 +31,13 @@ class KtorAuthService(
         return httpClient.post(
             route = "/auth/resend-verification",
             body = EmailRequest(email = email)
+        )
+    }
+
+    override suspend fun verifyEmail(token: String): EmptyResult<DataError.Remote> {
+        return httpClient.get(
+            route = "/auth/verify",
+            queryParams = mapOf("token" to token)
         )
     }
 
